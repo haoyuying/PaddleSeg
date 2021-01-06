@@ -84,9 +84,9 @@ def predict(model,
     pred_saved_dir = os.path.join(save_dir, 'pseudo_color_prediction')
 
     logger.info("Start to predict...")
-    progbar_pred = progbar.Progbar(target=len(img_lists[0]), verbose=1)
+    progbar_pred = progbar.Progbar(target=len(image_list), verbose=1)
     with paddle.no_grad():
-        for i, im_path in enumerate(img_lists[local_rank]):
+        for i, im_path in enumerate(image_list):
             im = cv2.imread(im_path)
             ori_shape = im.shape[:2]
             im, _ = transforms(im)
